@@ -1,26 +1,25 @@
-public class ContaInvestimento extends ContaCorrente {
-    public ContaInvestimento(String nomeTitular, int numeroConta) {
-        super(nomeTitular, numeroConta);
-    }
+import java.text.DecimalFormat;
 
-    public boolean rendimentoInvestimento() {
-        this.setSaldo(this.getSaldo() + (this.getSaldo() * 0.1));
+public class ContaInvestimento extends Conta {
+    protected float SaldoConta;
+    public boolean rendimentoContaInvestimento(){
+        this.setSaldoContaInvestimento((float) (getSaldoContaInvestimento() + (getSaldoContaInvestimento() * 0.1)));
         return true;
     }
-    @Override
-    public void deposito(float v){
 
-        this.setSaldo(getSaldo() + v);
-        System.out.println("Investimento de " + v + " efetuado com sucesso!" );
+    public void depositoContaInvestimento(float valorDeposito){
+       this.setSaldoContaInvestimento(getSaldoContaInvestimento() + valorDeposito);
+       rendimentoContaInvestimento();
     }
+
+    public void saqueContaInvestimento(float valorSaque){
+        this.setSaldoContaInvestimento(getSaldoContaInvestimento() - valorSaque);
+    }
+
     @Override
-    public void saque(float v){
-        this.setSaldo(getSaldo() - v);
-        System.out.println("Saque do seu fundo de investimentos de " + v + " efetuado com sucesso");
+    public void ConsultaSaldo(){
+        this.SaldoConta = getSaldoContaInvestimento();
+        System.out.println("Saldo na Conta de Investimentos: " + new DecimalFormat(".##").format(SaldoConta));
     }
-    @Override
-    public void consulSaldo(){
-        System.out.println("Saldo atual investido: R$" + this.getSaldo());
-    }
-    //Metodos especiais
+
 }

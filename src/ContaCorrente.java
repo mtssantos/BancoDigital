@@ -1,70 +1,17 @@
-import java.util.ArrayList;
+import java.text.DecimalFormat;
 
-public class ContaCorrente {
-
-    //Atributos
-    private double saldo;
-    //Valor que tem na conta
-
-    private int numeroConta;
-    private String nomeTitular;
-    private float histTransac;
-    private float extrato;
-
-    private float limCheEsp;
-
-
-
-    public void deposito(float v){
-
-        this.setSaldo(getSaldo() + v);
-        System.out.println("Depósito no total de " + v + " efetuado com sucesso na sua conta corrente!" );
-    }
-    public void saque(float v){
-        this.setSaldo(getSaldo() - v);
-        System.out.println("Saque de " + v + " efetuado com sucesso da sua conta corrente");
-    }
-    public void consulSaldo(){
-        System.out.println("Saldo atual da conta corrente: R$" + this.getSaldo());
-    }
-    //Metodos especiais
-
-
-    public ContaCorrente(String nomeTitular, int numeroConta) {
-        this.nomeTitular = nomeTitular;
-        this.numeroConta = numeroConta;
-
-
-    }
-    //Métodos Personalizados
-    public void estadoAtual(){
-        System.out.println("=========");
-        System.out.println("Titular: " + this.getNomeTitular());
-        System.out.println("Número da Conta: " + this.getNumeroConta());
-
-
+public class ContaCorrente extends Conta {
+    protected float SaldoConta;
+    public void depositoContaCorrente(float valorDeposito){
+       this.setSaldoContaCorrente(getSaldoContaCorrente() + valorDeposito);
     }
 
-    public float getSaldo() {
-        double saldo;
-        return 0;
+    public void saqueContaCorrente(float valorSaque){
+        this.setSaldoContaCorrente(getSaldoContaCorrente() - valorSaque);
     }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
+    @Override
+    public void ConsultaSaldo(){
+        this.SaldoConta = getSaldoContaCorrente();
+        System.out.println("Saldo na Conta Corrente: R$ " + new DecimalFormat(".##").format(SaldoConta));
     }
-
-    public int getNumeroConta() {
-        return numeroConta;
-    }
-
-    public void setNumeroConta(int numeroConta) {
-        this.numeroConta = numeroConta;
-    }
-
-    public String getNomeTitular() {
-        return nomeTitular;
-    }
-
-
 }
