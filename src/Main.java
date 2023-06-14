@@ -18,9 +18,10 @@ public class Main {
         ep.gerarEmprestimo(ct, 1000, 12);
 
         tr.transferirCtCp(ct, cp, 500);
+
         tr.transferirCpCt(ct, cp, 570);
 
-        System.out.println("Bem vindo ao BANCO LOKO \n" +
+        System.out.println("\n" + "\n" +"Bem vindo ao BANCO LOKO \n" +
                 "Aqui está as informações de sua conta: \n" +
                 "Nome do Titular: " + cn.getNome() + "\n" +
                 "Agência: " + cn.getAgencia() + "\n" +
